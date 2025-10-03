@@ -1,0 +1,1062 @@
+{
+	"id": "da62080aefe1458c5e6fd21fad1157e6",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.30",
+	"solcLongVersion": "0.8.30+commit.73712a01",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"lib/addresUtils.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\n/// @title AddressUtils\r\n/// @notice Utility library for address safety checks and ownership validation\r\nlibrary AddressUtils {\r\n    /// @notice Reverts if address is zero (address(0))\r\n    /// @param self Address to check\r\n    function   protectFromZeroAddress(address self) internal pure {\r\n        require(self != address(0), \"ERR: zero address\");\r\n    }\r\n\r\n    /// @notice Reverts if caller is not the owner\r\n    /// @dev Uses msg.sender directly, suitable for modifiers\r\n    /// @param owner Address that must match msg.sender\r\n    function requireIsOwner(address owner) internal view {\r\n        require(msg.sender == owner, \"AddressUtils: caller is not the owner\");\r\n    }\r\n\r\n    /// @notice Reverts if caller is the owner\r\n    /// @dev Uses msg.sender directly, suitable for modifiers\r\n    /// @param owner Address of the owner\r\n    function requireIsNotOwner(address owner) internal view {\r\n        require(msg.sender != owner, \"AddressUtils: owner cannot do this action\");\r\n    }\r\n}\r\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"contracts": {
+			"lib/addresUtils.sol": {
+				"AddressUtils": {
+					"abi": [],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"title": "AddressUtils",
+						"version": 1
+					},
+					"evm": {
+						"assembly": "    /* \"lib/addresUtils.sol\":166:1052  library AddressUtils {... */\n  dataSize(sub_0)\n  dataOffset(sub_0)\n  0x0b\n  dup3\n  dup3\n  dup3\n  codecopy\n  dup1\n  mload\n  0x00\n  byte\n  0x73\n  eq\n  tag_1\n  jumpi\n  mstore(0x00, 0x4e487b7100000000000000000000000000000000000000000000000000000000)\n  mstore(0x04, 0x00)\n  revert(0x00, 0x24)\ntag_1:\n  mstore(0x00, address)\n  0x73\n  dup2\n  mstore8\n  dup3\n  dup2\n  return\nstop\n\nsub_0: assembly {\n        /* \"lib/addresUtils.sol\":166:1052  library AddressUtils {... */\n      eq(address, deployTimeAddress())\n      mstore(0x40, 0x80)\n      revert(0x00, 0x00)\n\n    auxdata: 0xa2646970667358221220d535cd754866c8de1a51cc592e9029389801a9c62a295ab72071c9dd22a105c364736f6c634300081e0033\n}\n",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "6055604b600b8282823980515f1a607314603f577f4e487b71000000000000000000000000000000000000000000000000000000005f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220d535cd754866c8de1a51cc592e9029389801a9c62a295ab72071c9dd22a105c364736f6c634300081e0033",
+							"opcodes": "PUSH1 0x55 PUSH1 0x4B PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH0 BYTE PUSH1 0x73 EQ PUSH1 0x3F JUMPI PUSH32 0x4E487B7100000000000000000000000000000000000000000000000000000000 PUSH0 MSTORE PUSH0 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST ADDRESS PUSH0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 PUSH0 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xD5 CALLDATALOAD 0xCD PUSH22 0x4866C8DE1A51CC592E9029389801A9C62A295AB72071 0xC9 0xDD 0x22 LOG1 SDIV 0xC3 PUSH5 0x736F6C6343 STOP ADDMOD 0x1E STOP CALLER ",
+							"sourceMap": "166:886:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220d535cd754866c8de1a51cc592e9029389801a9c62a295ab72071c9dd22a105c364736f6c634300081e0033",
+							"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 PUSH0 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xD5 CALLDATALOAD 0xCD PUSH22 0x4866C8DE1A51CC592E9029389801A9C62A295AB72071 0xC9 0xDD 0x22 LOG1 SDIV 0xC3 PUSH5 0x736F6C6343 STOP ADDMOD 0x1E STOP CALLER ",
+							"sourceMap": "166:886:0:-:0;;;;;;;;"
+						},
+						"gasEstimates": {
+							"creation": {
+								"codeDepositCost": "17000",
+								"executionCost": "92",
+								"totalCost": "17092"
+							},
+							"internal": {
+								"protectFromZeroAddress(address)": "infinite",
+								"requireIsNotOwner(address)": "infinite",
+								"requireIsOwner(address)": "infinite"
+							}
+						},
+						"legacyAssembly": {
+							".code": [
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH #[$]",
+									"source": 0,
+									"value": "0000000000000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH [$]",
+									"source": 0,
+									"value": "0000000000000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "B"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "CODECOPY",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "DUP1",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "MLOAD",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "BYTE",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "73"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "EQ",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH [tag]",
+									"source": 0,
+									"value": "1"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "JUMPI",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "4E487B7100000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "4"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "24"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "REVERT",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "tag",
+									"source": 0,
+									"value": "1"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "JUMPDEST",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "ADDRESS",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "PUSH",
+									"source": 0,
+									"value": "73"
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "DUP2",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "MSTORE8",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "DUP2",
+									"source": 0
+								},
+								{
+									"begin": 166,
+									"end": 1052,
+									"name": "RETURN",
+									"source": 0
+								}
+							],
+							".data": {
+								"0": {
+									".auxdata": "a2646970667358221220d535cd754866c8de1a51cc592e9029389801a9c62a295ab72071c9dd22a105c364736f6c634300081e0033",
+									".code": [
+										{
+											"begin": 166,
+											"end": 1052,
+											"name": "PUSHDEPLOYADDRESS",
+											"source": 0
+										},
+										{
+											"begin": 166,
+											"end": 1052,
+											"name": "ADDRESS",
+											"source": 0
+										},
+										{
+											"begin": 166,
+											"end": 1052,
+											"name": "EQ",
+											"source": 0
+										},
+										{
+											"begin": 166,
+											"end": 1052,
+											"name": "PUSH",
+											"source": 0,
+											"value": "80"
+										},
+										{
+											"begin": 166,
+											"end": 1052,
+											"name": "PUSH",
+											"source": 0,
+											"value": "40"
+										},
+										{
+											"begin": 166,
+											"end": 1052,
+											"name": "MSTORE",
+											"source": 0
+										},
+										{
+											"begin": 166,
+											"end": 1052,
+											"name": "PUSH",
+											"source": 0,
+											"value": "0"
+										},
+										{
+											"begin": 166,
+											"end": 1052,
+											"name": "PUSH",
+											"source": 0,
+											"value": "0"
+										},
+										{
+											"begin": 166,
+											"end": 1052,
+											"name": "REVERT",
+											"source": 0
+										}
+									]
+								}
+							},
+							"sourceList": [
+								"lib/addresUtils.sol",
+								"#utility.yul"
+							]
+						},
+						"methodIdentifiers": {}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"AddressUtils\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Utility library for address safety checks and ownership validation\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"lib/addresUtils.sol\":\"AddressUtils\"},\"evmVersion\":\"prague\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"lib/addresUtils.sol\":{\"keccak256\":\"0x1e497a9b116e11b4aeba20c828837349a214c8c2dda752607c990f4d8711d5f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c9a60ee6513e43e8fa1d49e4c8d71305c0626ec95b0b13bd81e185857abe102c\",\"dweb:/ipfs/Qmc55Fi4is22S1PoFoVJdQ1MKNo7bFxNLNmH1tg5RE7nPQ\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"notice": "Utility library for address safety checks and ownership validation",
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"lib/addresUtils.sol": {
+				"ast": {
+					"absolutePath": "lib/addresUtils.sol",
+					"exportedSymbols": {
+						"AddressUtils": [
+							50
+						]
+					},
+					"id": 51,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".20"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:24:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "AddressUtils",
+							"contractDependencies": [],
+							"contractKind": "library",
+							"documentation": {
+								"id": 2,
+								"nodeType": "StructuredDocumentation",
+								"src": "61:105:0",
+								"text": "@title AddressUtils\n @notice Utility library for address safety checks and ownership validation"
+							},
+							"fullyImplemented": true,
+							"id": 50,
+							"linearizedBaseContracts": [
+								50
+							],
+							"name": "AddressUtils",
+							"nameLocation": "174:12:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"body": {
+										"id": 18,
+										"nodeType": "Block",
+										"src": "351:67:0",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_address",
+																"typeString": "address"
+															},
+															"id": 14,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"id": 9,
+																"name": "self",
+																"nodeType": "Identifier",
+																"overloadedDeclarations": [],
+																"referencedDeclaration": 5,
+																"src": "370:4:0",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": "!=",
+															"rightExpression": {
+																"arguments": [
+																	{
+																		"hexValue": "30",
+																		"id": 12,
+																		"isConstant": false,
+																		"isLValue": false,
+																		"isPure": true,
+																		"kind": "number",
+																		"lValueRequested": false,
+																		"nodeType": "Literal",
+																		"src": "386:1:0",
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_rational_0_by_1",
+																			"typeString": "int_const 0"
+																		},
+																		"value": "0"
+																	}
+																],
+																"expression": {
+																	"argumentTypes": [
+																		{
+																			"typeIdentifier": "t_rational_0_by_1",
+																			"typeString": "int_const 0"
+																		}
+																	],
+																	"id": 11,
+																	"isConstant": false,
+																	"isLValue": false,
+																	"isPure": true,
+																	"lValueRequested": false,
+																	"nodeType": "ElementaryTypeNameExpression",
+																	"src": "378:7:0",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_type$_t_address_$",
+																		"typeString": "type(address)"
+																	},
+																	"typeName": {
+																		"id": 10,
+																		"name": "address",
+																		"nodeType": "ElementaryTypeName",
+																		"src": "378:7:0",
+																		"typeDescriptions": {}
+																	}
+																},
+																"id": 13,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": true,
+																"kind": "typeConversion",
+																"lValueRequested": false,
+																"nameLocations": [],
+																"names": [],
+																"nodeType": "FunctionCall",
+																"src": "378:10:0",
+																"tryCall": false,
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"src": "370:18:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"hexValue": "4552523a207a65726f2061646472657373",
+															"id": 15,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": true,
+															"kind": "string",
+															"lValueRequested": false,
+															"nodeType": "Literal",
+															"src": "390:19:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_stringliteral_dd1205ff9b6e96d99bc5043973faf6c67afe78a20651f46c0b7462d89a83b9bb",
+																"typeString": "literal_string \"ERR: zero address\""
+															},
+															"value": "ERR: zero address"
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_stringliteral_dd1205ff9b6e96d99bc5043973faf6c67afe78a20651f46c0b7462d89a83b9bb",
+																"typeString": "literal_string \"ERR: zero address\""
+															}
+														],
+														"id": 8,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "362:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 16,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"nameLocations": [],
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "362:48:0",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 17,
+												"nodeType": "ExpressionStatement",
+												"src": "362:48:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 3,
+										"nodeType": "StructuredDocumentation",
+										"src": "194:89:0",
+										"text": "@notice Reverts if address is zero (address(0))\n @param self Address to check"
+									},
+									"id": 19,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "protectFromZeroAddress",
+									"nameLocation": "300:22:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 6,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 5,
+												"mutability": "mutable",
+												"name": "self",
+												"nameLocation": "331:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 19,
+												"src": "323:12:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 4,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "323:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "322:14:0"
+									},
+									"returnParameters": {
+										"id": 7,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "351:0:0"
+									},
+									"scope": 50,
+									"src": "289:129:0",
+									"stateMutability": "pure",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 33,
+										"nodeType": "Block",
+										"src": "651:88:0",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_address",
+																"typeString": "address"
+															},
+															"id": 29,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"expression": {
+																	"id": 26,
+																	"name": "msg",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967281,
+																	"src": "670:3:0",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_magic_message",
+																		"typeString": "msg"
+																	}
+																},
+																"id": 27,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"lValueRequested": false,
+																"memberLocation": "674:6:0",
+																"memberName": "sender",
+																"nodeType": "MemberAccess",
+																"src": "670:10:0",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": "==",
+															"rightExpression": {
+																"id": 28,
+																"name": "owner",
+																"nodeType": "Identifier",
+																"overloadedDeclarations": [],
+																"referencedDeclaration": 22,
+																"src": "684:5:0",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"src": "670:19:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"hexValue": "416464726573735574696c733a2063616c6c6572206973206e6f7420746865206f776e6572",
+															"id": 30,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": true,
+															"kind": "string",
+															"lValueRequested": false,
+															"nodeType": "Literal",
+															"src": "691:39:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_stringliteral_62d28a2843a541c2729100a9c65c913e9c6f94f65de4194fa4b3c87d46bc26af",
+																"typeString": "literal_string \"AddressUtils: caller is not the owner\""
+															},
+															"value": "AddressUtils: caller is not the owner"
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_stringliteral_62d28a2843a541c2729100a9c65c913e9c6f94f65de4194fa4b3c87d46bc26af",
+																"typeString": "literal_string \"AddressUtils: caller is not the owner\""
+															}
+														],
+														"id": 25,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "662:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 31,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"nameLocations": [],
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "662:69:0",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 32,
+												"nodeType": "ExpressionStatement",
+												"src": "662:69:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 20,
+										"nodeType": "StructuredDocumentation",
+										"src": "426:166:0",
+										"text": "@notice Reverts if caller is not the owner\n @dev Uses msg.sender directly, suitable for modifiers\n @param owner Address that must match msg.sender"
+									},
+									"id": 34,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "requireIsOwner",
+									"nameLocation": "607:14:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 23,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 22,
+												"mutability": "mutable",
+												"name": "owner",
+												"nameLocation": "630:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 34,
+												"src": "622:13:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 21,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "622:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "621:15:0"
+									},
+									"returnParameters": {
+										"id": 24,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "651:0:0"
+									},
+									"scope": 50,
+									"src": "598:141:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 48,
+										"nodeType": "Block",
+										"src": "957:92:0",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_address",
+																"typeString": "address"
+															},
+															"id": 44,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"expression": {
+																	"id": 41,
+																	"name": "msg",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967281,
+																	"src": "976:3:0",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_magic_message",
+																		"typeString": "msg"
+																	}
+																},
+																"id": 42,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"lValueRequested": false,
+																"memberLocation": "980:6:0",
+																"memberName": "sender",
+																"nodeType": "MemberAccess",
+																"src": "976:10:0",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": "!=",
+															"rightExpression": {
+																"id": 43,
+																"name": "owner",
+																"nodeType": "Identifier",
+																"overloadedDeclarations": [],
+																"referencedDeclaration": 37,
+																"src": "990:5:0",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_address",
+																	"typeString": "address"
+																}
+															},
+															"src": "976:19:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"hexValue": "416464726573735574696c733a206f776e65722063616e6e6f7420646f207468697320616374696f6e",
+															"id": 45,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": true,
+															"kind": "string",
+															"lValueRequested": false,
+															"nodeType": "Literal",
+															"src": "997:43:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_stringliteral_354a906662cee54b47efc248ca022cde7974fe889ed1b1bf09f96898dad03fb4",
+																"typeString": "literal_string \"AddressUtils: owner cannot do this action\""
+															},
+															"value": "AddressUtils: owner cannot do this action"
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_stringliteral_354a906662cee54b47efc248ca022cde7974fe889ed1b1bf09f96898dad03fb4",
+																"typeString": "literal_string \"AddressUtils: owner cannot do this action\""
+															}
+														],
+														"id": 40,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "968:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 46,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"nameLocations": [],
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "968:73:0",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 47,
+												"nodeType": "ExpressionStatement",
+												"src": "968:73:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 35,
+										"nodeType": "StructuredDocumentation",
+										"src": "747:148:0",
+										"text": "@notice Reverts if caller is the owner\n @dev Uses msg.sender directly, suitable for modifiers\n @param owner Address of the owner"
+									},
+									"id": 49,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "requireIsNotOwner",
+									"nameLocation": "910:17:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 38,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 37,
+												"mutability": "mutable",
+												"name": "owner",
+												"nameLocation": "936:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 49,
+												"src": "928:13:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 36,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "928:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "927:15:0"
+									},
+									"returnParameters": {
+										"id": 39,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "957:0:0"
+									},
+									"scope": 50,
+									"src": "901:148:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "internal"
+								}
+							],
+							"scope": 51,
+							"src": "166:886:0",
+							"usedErrors": [],
+							"usedEvents": []
+						}
+					],
+					"src": "33:1021:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}
