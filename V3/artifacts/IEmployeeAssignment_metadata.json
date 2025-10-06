@@ -1,0 +1,274 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "employee",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "EmployeeAssigned",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "employee",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "EmployeeRemoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerChanged",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newEmployee",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "assignNewEmployee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "changeOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "employeeCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "hasRole",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "employee",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "removeEmployee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Provides function definitions for employee role management and ownership control",
+			"events": {
+				"EmployeeAssigned(address,string)": {
+					"params": {
+						"employee": "The address of the newly assigned employee",
+						"role": "The role assigned to the employee"
+					}
+				},
+				"EmployeeRemoved(address,string)": {
+					"params": {
+						"employee": "The address of the removed employee",
+						"role": "The role that was removed"
+					}
+				},
+				"OwnerChanged(address,address)": {
+					"params": {
+						"newOwner": "The address of the new owner",
+						"oldOwner": "The address of the previous owner"
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"assignNewEmployee(address,string)": {
+					"details": "Only the owner can assign new employees",
+					"params": {
+						"newEmployee": "Address of the employee to be assigned",
+						"role": "Role to assign to the employee"
+					}
+				},
+				"changeOwner(address)": {
+					"details": "Only the current owner can call this function",
+					"params": {
+						"newOwner": "Address of the new owner"
+					}
+				},
+				"employeeCount()": {
+					"returns": {
+						"_0": "uint Total employee count"
+					}
+				},
+				"hasRole(address,string)": {
+					"params": {
+						"account": "Address to check",
+						"role": "Role to check for"
+					},
+					"returns": {
+						"_0": "bool True if the account has the specified role"
+					}
+				},
+				"removeEmployee(address,string)": {
+					"details": "Only the owner can remove employee roles",
+					"params": {
+						"employee": "Address of the employee to remove the role from",
+						"role": "Role to remove from the employee"
+					}
+				}
+			},
+			"title": "Employee Assignment Interface",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"EmployeeAssigned(address,string)": {
+					"notice": "Emitted when a new employee is assigned"
+				},
+				"EmployeeRemoved(address,string)": {
+					"notice": "Emitted when an employee is removed"
+				},
+				"OwnerChanged(address,address)": {
+					"notice": "Emitted when the contract owner is changed"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"assignNewEmployee(address,string)": {
+					"notice": "Assigns a new employee with a specific role"
+				},
+				"changeOwner(address)": {
+					"notice": "Transfers ownership to a new address"
+				},
+				"employeeCount()": {
+					"notice": "Get total number of employees currently assigned"
+				},
+				"hasRole(address,string)": {
+					"notice": "Checks if an address has a specific role"
+				},
+				"removeEmployee(address,string)": {
+					"notice": "Removes an employee's role"
+				}
+			},
+			"notice": "Interface for role-based access control with owner and employee management",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Interface/Iemploye_assignment.sol": "IEmployeeAssignment"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Interface/Iemploye_assignment.sol": {
+			"keccak256": "0xec0a39728b30db92ef38bb7504ee474ac143c61ba0c75160203837821050c058",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b324f600d6b02bc2b3d8d06263c16e34cf252561c55cff6bc8856c002d62a53e",
+				"dweb:/ipfs/QmZdKzSsZSoNRrSoLtBQtqrUjJ9WpUJqiBTBfRJXWzoNTz"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,1464 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "Blacklisted",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "required",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "available",
+						"type": "uint256"
+					}
+				],
+				"name": "ContractLiquidityInsufficient",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "fn",
+						"type": "string"
+					}
+				],
+				"name": "DelegateCallFailed",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "required",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "provided",
+						"type": "uint256"
+					}
+				],
+				"name": "InsufficientCollateral",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidDuration",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidInitialization",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "InvalidLoanId",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidPrincipal",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "LoanInactiveOrLiquidated",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NewLoansBlocked",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "NotBlacklisted",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotBorrower",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotInitializing",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "expected",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "received",
+						"type": "uint256"
+					}
+				],
+				"name": "PaymentValueMismatch",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "ZeroAddress",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldContract",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newContract",
+						"type": "address"
+					}
+				],
+				"name": "AdminLogicChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					}
+				],
+				"name": "Blacklistedi",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "oldValue",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newValue",
+						"type": "uint256"
+					}
+				],
+				"name": "CollateralRatioChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "employee",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "EmployeeAssigned",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "employee",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "EmployeeRemoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "managementWallet",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "AdminLogic",
+						"type": "address"
+					}
+				],
+				"name": "InitialAddress",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "version",
+						"type": "uint64"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "oldValue",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newValue",
+						"type": "uint256"
+					}
+				],
+				"name": "InterestRateChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "startTimestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "LoanApproved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "LoanDisbursed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "collateralUsed",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "deficitCovered",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "profitFromCollateral",
+						"type": "uint256"
+					}
+				],
+				"name": "LoanLiquidated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "principal",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "durationMonths",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "collateral",
+						"type": "uint256"
+					}
+				],
+				"name": "LoanRequested",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldWallet",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newWallet",
+						"type": "address"
+					}
+				],
+				"name": "ManagementWalletChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "oldValue",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newValue",
+						"type": "uint256"
+					}
+				],
+				"name": "MaxNPLChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "missedCount",
+						"type": "uint256"
+					}
+				],
+				"name": "MonthMissed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "payer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "monthIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "MonthlyPaymentMade",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "oldValue",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newValue",
+						"type": "uint256"
+					}
+				],
+				"name": "PenaltyPercentChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "ProfitTaken",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "strikes",
+						"type": "uint256"
+					}
+				],
+				"name": "StrikeAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					}
+				],
+				"name": "UnBlacklisted",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "TotalLoan",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					}
+				],
+				"name": "approveLoan",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newEmployee",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "assignNewEmployee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "blacklist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "changeOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					}
+				],
+				"name": "checkAndProcessLoan",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "collateralRatioPercent",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "employeeCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "hasRole",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "_managementWallet",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_AdminLogic",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					}
+				],
+				"name": "loanInfo",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "principal",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "durationMonths",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "paidMonths",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "consecutiveMissed",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "remainingPrincipal",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "collateral",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "liquidated",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "loans",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "principal",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "durationMonths",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "paidMonths",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "consecutiveMissed",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "remainingPrincipal",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "collateral",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "liquidated",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxNPLPercent",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "monthlyInterestPercent",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "monthsToPay",
+						"type": "uint256"
+					}
+				],
+				"name": "payMonthly",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "penaltyPercent",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "loanId",
+						"type": "uint256"
+					}
+				],
+				"name": "rejectLoan",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "employee",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "removeEmployee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "principalInETH",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "durationMonths",
+						"type": "uint256"
+					}
+				],
+				"name": "requestLoan",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "p",
+						"type": "uint16"
+					}
+				],
+				"name": "setCollateralRatioPercent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_AdminLogic",
+						"type": "address"
+					}
+				],
+				"name": "setLogicAdminContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "w",
+						"type": "address"
+					}
+				],
+				"name": "setManagementWallet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "p",
+						"type": "uint16"
+					}
+				],
+				"name": "setMaxNPLPercent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "p",
+						"type": "uint16"
+					}
+				],
+				"name": "setMonthlyInterestPercent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "p",
+						"type": "uint16"
+					}
+				],
+				"name": "setPenaltyPercent",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "strikes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "takeProfits",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalProfits",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "unblacklist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"errors": {
+				"InvalidInitialization()": [
+					{
+						"details": "The contract is already initialized."
+					}
+				],
+				"NotInitializing()": [
+					{
+						"details": "The contract is not initializing."
+					}
+				]
+			},
+			"events": {
+				"EmployeeAssigned(address,string)": {
+					"params": {
+						"employee": "The address of the newly assigned employee",
+						"role": "The role assigned to the employee"
+					}
+				},
+				"EmployeeRemoved(address,string)": {
+					"params": {
+						"employee": "The address of the removed employee",
+						"role": "The role that was removed"
+					}
+				},
+				"Initialized(uint64)": {
+					"details": "Triggered when the contract has been initialized or reinitialized."
+				},
+				"OwnerChanged(address,address)": {
+					"params": {
+						"newOwner": "The address of the new owner",
+						"oldOwner": "The address of the previous owner"
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"TotalLoan()": {
+					"returns": {
+						"_0": "uint Total number of loans"
+					}
+				},
+				"approveLoan(uint256)": {
+					"details": "Approves a pending loan and transfers principal to borrower",
+					"params": {
+						"loanId": "ID of the loan to approve"
+					}
+				},
+				"assignNewEmployee(address,string)": {
+					"details": "Only the owner can assign new employees. Validates role and address.",
+					"params": {
+						"newEmployee": "Address of the employee to be assigned",
+						"role": "Role to assign to the employee"
+					}
+				},
+				"changeOwner(address)": {
+					"details": "Only the current owner can call this function. Validates the new owner address.",
+					"params": {
+						"newOwner": "Address of the new owner"
+					}
+				},
+				"checkAndProcessLoan(uint256)": {
+					"details": "Monitors loan status and triggers liquidation if criteria are met",
+					"params": {
+						"loanId": "ID of the loan to check"
+					}
+				},
+				"hasRole(address,string)": {
+					"params": {
+						"account": "Address to check",
+						"role": "Role to check for"
+					},
+					"returns": {
+						"_0": "bool True if the account has the specified role"
+					}
+				},
+				"initialize(address,address)": {
+					"details": "Called during contract deployment/upgrade",
+					"params": {
+						"_AdminLogic": "Address of AdminLogic contract for delegated calls",
+						"_managementWallet": "Address for management fees"
+					}
+				},
+				"loanInfo(uint256)": {
+					"params": {
+						"loanId": "ID of the loan to query"
+					},
+					"returns": {
+						"active": "Whether loan is active",
+						"borrower": "Borrower address",
+						"collateral": "Collateral amount",
+						"consecutiveMissed": "Consecutive missed payments",
+						"durationMonths": "Loan duration in months",
+						"liquidated": "Whether loan is liquidated",
+						"paidMonths": "Number of months paid",
+						"principal": "Original principal amount",
+						"remainingPrincipal": "Remaining principal amount",
+						"startTimestamp": "Loan start timestamp"
+					}
+				},
+				"payMonthly(uint256,uint256)": {
+					"details": "Processes payment for specified number of months including penalties if applicable",
+					"params": {
+						"loanId": "ID of the loan to make payment for",
+						"monthsToPay": "Number of months to pay"
+					}
+				},
+				"rejectLoan(uint256)": {
+					"details": "Rejects a pending loan and refunds collateral to borrower",
+					"params": {
+						"loanId": "ID of the loan to reject"
+					}
+				},
+				"removeEmployee(address,string)": {
+					"details": "Only the owner can remove employee roles. Validates role and current assignment.",
+					"params": {
+						"employee": "Address of the employee to remove the role from",
+						"role": "Role to remove from the employee"
+					}
+				},
+				"requestLoan(uint256,uint256)": {
+					"details": "Creates a new loan request with specified principal and duration",
+					"params": {
+						"durationMonths": "Loan duration in months",
+						"principalInETH": "Loan amount in ETH"
+					}
+				},
+				"setCollateralRatioPercent(uint16)": {
+					"details": "Delegates call to AdminLogic contract",
+					"params": {
+						"p": "New collateral ratio percentage"
+					}
+				},
+				"setLogicAdminContract(address)": {
+					"details": "Only owner can change the AdminLogic contract",
+					"params": {
+						"_AdminLogic": "New AdminLogic contract address"
+					}
+				},
+				"setManagementWallet(address)": {
+					"details": "Delegates call to AdminLogic contract",
+					"params": {
+						"w": "New management wallet address"
+					}
+				},
+				"setMaxNPLPercent(uint16)": {
+					"details": "Delegates call to AdminLogic contract",
+					"params": {
+						"p": "New maximum NPL percentage"
+					}
+				},
+				"setMonthlyInterestPercent(uint16)": {
+					"details": "Delegates call to AdminLogic contract",
+					"params": {
+						"p": "New monthly interest percentage"
+					}
+				},
+				"setPenaltyPercent(uint16)": {
+					"details": "Delegates call to AdminLogic contract",
+					"params": {
+						"p": "New penalty percentage"
+					}
+				},
+				"takeProfits()": {
+					"details": "Delegates call to AdminLogic contract to transfer profits"
+				},
+				"unblacklist(address)": {
+					"details": "Removes an address from the blacklist allowing them to request loans",
+					"params": {
+						"user": "Address to remove from blacklist"
+					}
+				}
+			},
+			"title": "Conventional Bank-Style Loan Manager (ETH-based)",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"EmployeeAssigned(address,string)": {
+					"notice": "Emitted when a new employee is assigned"
+				},
+				"EmployeeRemoved(address,string)": {
+					"notice": "Emitted when an employee is removed"
+				},
+				"OwnerChanged(address,address)": {
+					"notice": "Emitted when the contract owner is changed"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"TotalLoan()": {
+					"notice": "Get total number of loans"
+				},
+				"approveLoan(uint256)": {
+					"notice": "Admin approves and disburses the loan"
+				},
+				"assignNewEmployee(address,string)": {
+					"notice": "Assigns a new employee with a specific role"
+				},
+				"blacklist(address)": {
+					"notice": "Mapping of blacklisted addresses"
+				},
+				"changeOwner(address)": {
+					"notice": "Transfers ownership to a new address"
+				},
+				"checkAndProcessLoan(uint256)": {
+					"notice": "Called to check loan status and auto-liquidate if conditions met"
+				},
+				"collateralRatioPercent()": {
+					"notice": "Collateral ratio required for loans"
+				},
+				"employeeCount()": {
+					"notice": "Total number of employees currently assigned"
+				},
+				"hasRole(address,string)": {
+					"notice": "Checks if an address has a specific role"
+				},
+				"initialize(address,address)": {
+					"notice": "Initializes the contract with required addresses and default parameters"
+				},
+				"loanInfo(uint256)": {
+					"notice": "Get detailed information about a loan"
+				},
+				"loans(uint256)": {
+					"notice": "Array of all loans"
+				},
+				"maxNPLPercent()": {
+					"notice": "Maximum Non-Performing Loan percentage allowed"
+				},
+				"monthlyInterestPercent()": {
+					"notice": "Monthly interest rate in percent (e.g., 2 for 2%)"
+				},
+				"payMonthly(uint256,uint256)": {
+					"notice": "Pay monthly installment(s). Caller can pay for one or more months at once."
+				},
+				"penaltyPercent()": {
+					"notice": "Penalty percentage for missed payments"
+				},
+				"rejectLoan(uint256)": {
+					"notice": "Admin can reject a loan request (collateral returned)"
+				},
+				"removeEmployee(address,string)": {
+					"notice": "Removes an employee's role"
+				},
+				"requestLoan(uint256,uint256)": {
+					"notice": "Request a loan and deposit collateral (send collateral with the call)"
+				},
+				"setCollateralRatioPercent(uint16)": {
+					"notice": "Set collateral ratio percentage"
+				},
+				"setLogicAdminContract(address)": {
+					"notice": "Set the AdminLogic contract address"
+				},
+				"setManagementWallet(address)": {
+					"notice": "Set management wallet address"
+				},
+				"setMaxNPLPercent(uint16)": {
+					"notice": "Set maximum NPL percentage"
+				},
+				"setMonthlyInterestPercent(uint16)": {
+					"notice": "Set monthly interest percentage"
+				},
+				"setPenaltyPercent(uint16)": {
+					"notice": "Set penalty percentage"
+				},
+				"strikes(address)": {
+					"notice": "Mapping of strikes count per address"
+				},
+				"takeProfits()": {
+					"notice": "Take accumulated profits"
+				},
+				"totalProfits()": {
+					"notice": "Total profits accumulated by the protocol"
+				},
+				"unblacklist(address)": {
+					"notice": "Remove a user from the blacklist"
+				}
+			},
+			"notice": "Manages ETH-denominated loans with collateral, interest, penalties, and liquidation logic",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Data/Loan.sol": "LoanData"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0xdb4d24ee2c087c391d587cd17adfe5b3f9d93b3110b1388c2ab6c7c0ad1dcd05",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ab7b6d5b9e2b88176312967fe0f0e78f3d9a1422fa5e4b64e2440c35869b5d08",
+				"dweb:/ipfs/QmXKYWWyzcLg1B2k7Sb1qkEXgLCYfXecR9wYW5obRzWP1Q"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol": {
+			"keccak256": "0x2025ccf05f6f1f2fd4e078e552836f525a1864e3854ed555047cd732320ab29b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d27f4b23c2dee42394aebaf42bf238285230f472dfd3282a39c3f000ec28214f",
+				"dweb:/ipfs/QmQa3DnvccwdWJeWrjgXPnFMTWbzWQWR39hVqC7eEwo2PC"
+			]
+		},
+		"Data/Loan.sol": {
+			"keccak256": "0x1d54cc6debf70dd5cedaff7114f491b0f8455e8ae4da9d7245acd73f58a8ade5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8f010c5941be43f474d4f9fe011b2f1b0ed537c41e6f744b083d4fb3bd0c53bf",
+				"dweb:/ipfs/QmXooWFYUXXZXmVXBYyKx2iB8gdKniXQtTVqJ2WxhGfC5t"
+			]
+		},
+		"Interface/Iemploye_assignment.sol": {
+			"keccak256": "0xec0a39728b30db92ef38bb7504ee474ac143c61ba0c75160203837821050c058",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b324f600d6b02bc2b3d8d06263c16e34cf252561c55cff6bc8856c002d62a53e",
+				"dweb:/ipfs/QmZdKzSsZSoNRrSoLtBQtqrUjJ9WpUJqiBTBfRJXWzoNTz"
+			]
+		},
+		"Owner/employe_assignment.sol": {
+			"keccak256": "0x3647448ddbbb3cfdbfe1801a500a8fcdc9a27f75bae60b5981e55c1c5adcb3d0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e2f58cf1a31cc754d005bc6e466956577914792cbd6b6ef87eaab9e693807b06",
+				"dweb:/ipfs/QmSVwvPyLvadiZti3t9pjAUurU3CJvSuL6i2LDM32xFwaW"
+			]
+		},
+		"lib/TimeUtils.sol": {
+			"keccak256": "0x1b0b27c6f9ac572046f027981cad55e678a782c00e697493bbe1eb34ff7469e2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a97aeade33932897d5f513e988c368ceef48c44261699ae31e11013e535a29e6",
+				"dweb:/ipfs/QmPrE42jubREVvbgB7EZgyKN1icNqLwWsUutdASNkV4QuN"
+			]
+		},
+		"lib/regular.sol": {
+			"keccak256": "0x27da5518e7018a88c6ca200f460529e3386e13fc209d270578fed0cbff79e86e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f1263b40b1852f7ecb8c4a678f7654b5b1e77fb3085c4b9eb02a3f0b267657a8",
+				"dweb:/ipfs/QmTDd7jJMy3gXjg7RRj5j1B7hJdimNrJqo8Q8czmiRUu5Y"
+			]
+		}
+	},
+	"version": 1
+}
