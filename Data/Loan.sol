@@ -7,7 +7,7 @@ import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.
 import "../lib/TimeUtils.sol";
 
 /// @title Conventional Bank-Style Loan Manager (ETH-based)
-/// @author (unnamed)
+/// @author nugi
 /// @notice Manages ETH-denominated loans with collateral, interest, penalties, and liquidation logic
 /// @dev
 /// - This contract is upgradeable (uses initializer pattern and storage gap)
@@ -918,3 +918,4 @@ contract LoanData is AccesControl, ReentrancyGuardUpgradeable {
         emit LoanLiquidated(loanId, ln.borrower, usedCollateral, deficit, profitFromCollateral);
     }
 }
+
